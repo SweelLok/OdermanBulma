@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="icon" href="../static/photo/oderman.jpg">
+    <title>Додати нову піцу</title>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="box">
+                        <h1 class="title has-text-centered">Додати нову піцу</h1>
+                        
+                        <form action="/add_pizza/" method="POST">
+                            <div class="field">
+                                <label class="label" for="name">Назва піци</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="name" name="name" required placeholder="Назва піци">
+                                </div>
+                            </div>
+                            
+                            <div class="field">
+                                <label class="label" for="ingredients">Інгредієнти</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="ingredients" name="ingredients" required placeholder="Інгредієнти">
+                                </div>
+                            </div>
+                            
+                            <div class="field">
+                                <label class="label" for="price">Ціна</label>
+                                <div class="control">
+                                    <input class="input" type="number" id="price" name="price" required placeholder="Ціна в грн">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                              <label class="label" for="price">Фото</label>
+                              <div class="control">
+                                  <input class="input" type="photo" id="photo" name="photo" required placeholder="URL для фото">
+                              </div>
+                          </div>
+                            
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-primary is-fullwidth" type="submit">Додати піцу</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                        
+                        <div class="has-text-centered mt-4">
+                            <a href="{{ url_for('menu_page') }}" class="button is-light">Повернутися до меню</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/poll.css') }}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+	<title>Poll</title>
+</head>
+<body>
+{% extends 'index.html' %}
+{% block content %}
+	<section class="section">
+		<div class="container">
+			<h1 class="title is-2">Найкраща піца</h1>
+			
+			<form action="/poll/" method="POST">
+				<div class="field">
+					{% for pizza in data %}
+					<div class="control">
+						<label class="radio is-large" style="font-size: 1.5rem;">
+							<input type="radio" name="field" value="{{ pizza.name }}">
+							{{ pizza.name }}
+						</label>
+					</div>
+					{% endfor %}
+				</div>
+				
+				<div class="field is-grouped">
+					<div class="control">
+						<button type="submit" class="button is-primary is-large">Голосувати</button>
+					</div>
+					<div class="control">
+						<a href="{{url_for('get_results')}}" class="button is-warning is-large">
+							Результати
+						</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+{% endblock content %}
+</body>
+</html>

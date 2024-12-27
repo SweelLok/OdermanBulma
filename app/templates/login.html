@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+<body>
+<section class="hero is-light is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <form action="/login/" method="POST" class="box">
+                        <div class="field">
+                            <label class="label">Логін</label>
+                            <div class="control">
+                                <input class="input" type="text" id="username" name="username" required placeholder="Логін">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Пароль</label>
+                            <div class="control">
+                                <input class="input" type="password" id="password" name="password" required placeholder="Пароль">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="button is-primary is-fullwidth" type="submit">
+                                Вхід
+                            </button>
+                        </div>                      
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

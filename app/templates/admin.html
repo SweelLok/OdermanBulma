@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/menu_style.css') }}">
+  <link rel="icon" href="../static/photo/oderman.jpg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <title>Menu</title>
+</head>
+<body>
+  {% extends 'index.html' %}
+{% block content %}
+<div class="container" style="margin-top: 2rem;">
+  <div class="columns is-multiline">
+    {% for pizza in pizzas %}
+    <div class="column is-one-quarter">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="{{ pizza[4] }}" alt="{{ pizza[1] }}">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-4">{{ pizza[1] }}</p>
+            <p class="subtitle is-6">ID: {{ pizza[0] }}</p>
+            <p>{{ pizza[2] }}</p>
+            <p class="has-text-weight-bold">{{ pizza[3] }} грн</p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="{{url_for('get_edit', pizza_id=pizza['id']) }}" class="card-footer-item button is-warning">
+            Редагувати
+          </a>
+        </footer>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="container has-text-centered mt-6">
+  <form action="/add_pizza/" method="GET">
+    <button type="submit" class="button is-primary is-medium" style="margin-top: -2rem;">Додати піцу</button>
+  </form>
+  <a href="{{ url_for('logout') }}" class="button is-danger is-medium" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+    Вийти
+  </a>
+</div>
+{% endblock content %}
+</body>
+</html>

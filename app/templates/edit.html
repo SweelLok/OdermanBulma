@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='photo/oderman.jpg') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <title>Edit</title>
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <form method="post">
+        <div class="field">
+          <label class="label" for="name" style="font-size: 22px;">Ім'я</label>
+          <div class="control">
+            <input 
+              class="input" 
+              type="text" 
+              id="name" 
+              name="name"
+              style="font-size: 18px;" 
+              placeholder="Назва піци" 
+              value="{{ request.form['name'] or pizza['name'] }}">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="ingredients" style="font-size: 22px;">Інгредієнти</label>
+          <div class="control">
+            <input 
+              class="input" 
+              type="text" 
+              id="ingredients" 
+              name="ingredients" 
+              style="font-size: 18px;"
+              placeholder="Інгредієнти" 
+              value="{{ request.form['ingredients'] or pizza['ingredients'] }}">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="price" style="font-size: 22px;">Ціна</label>
+          <div class="control">
+            <input 
+              class="input" 
+              type="text" 
+              id="price" 
+              name="price" 
+              style="font-size: 18px;"
+              placeholder="Ціна в грн" 
+              value="{{ request.form['price'] or pizza['price'] }}">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="price" style="font-size: 22px;">Фото</label>
+          <div class="control">
+            <input 
+              class="input" 
+              type="text" 
+              id="photo" 
+              name="photo" 
+              style="font-size: 18px;"
+              placeholder="URL для фото" 
+              value="{{ request.form['photo'] or pizza['photo'] }}">
+          </div>
+        </div>
+      
+        <div class="field is-grouped">
+          <div class="control">
+            <button type="submit" class="button is-primary" style="font-size: 18px;">Змінити</button>
+          </div>
+          <div class="control">
+            <input type="submit" style="font-size: 18px;" value="Видалити піцу" 
+              class="button is-danger is-small" 
+              onclick="return confirm('Ви впевнені, що хочете видалити цю піцу?')"
+              formaction="{{url_for('pizza_delete', pizza_id=pizza['id']) }}">
+          </div>
+        </div>
+      </form>
+
+      <!-- Flash messages -->
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="notification is-info">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <hr>
+
+      <div class="has-text-centered mt-4">
+        <a href="{{ url_for('menu_page') }}" class="button is-light">Повернутися до меню</a>
+      </div>
+      
+    </div>
+  </section>
+</body>
+</html>
